@@ -1,0 +1,5 @@
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.Domain\obj\Debug\net9.0\Pagos.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.Domain\obj\Debug\net9.0\Pagos.Domain.AssemblyInfoInputs.cache
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.Domain\obj\Debug\net9.0\Pagos.Domain.AssemblyInfo.cs
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.Domain\obj\Debug\net9.0\Pagos.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.Domain\obj\Debug\net9.0\Pagos.Domain.sourcelink.json

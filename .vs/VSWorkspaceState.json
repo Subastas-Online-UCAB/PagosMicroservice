@@ -2,8 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\PagosMicroservice",
-    "\\PagosMicroservice\\Pagos.Domain"
+    "\\PagosMicroservice\\Pagos.API",
+    "\\PagosMicroservice\\Pagos.API\\Controllers",
+    "\\PagosMicroservice\\Pagos.Application\\DTOs",
+    "\\PagosMicroservice\\Pagos.Application\\Servicios",
+    "\\PagosMicroservice\\Pagos.Domain\\Entidades",
+    "\\PagosMicroservice\\Pagos.Infrastructure\\Servicios"
   ],
-  "SelectedNode": "\\PagosMicroservice\\Pagos.Domain\\Entidades",
+  "SelectedNode": "\\PagosMicroservice\\Pagos.API\\appsettings.json",
   "PreviewInSolutionExplorer": false
 }

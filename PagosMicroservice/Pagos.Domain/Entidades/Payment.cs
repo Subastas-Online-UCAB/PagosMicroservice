@@ -1,6 +1,6 @@
 namespace Pagos.Domain.Entities;
 
-public class Pagos
+public class Payment
 {
     public Guid Id { get; set; }
     public string IdUsuario { get; set; } // IdUsuario del microservicio de usuarios
