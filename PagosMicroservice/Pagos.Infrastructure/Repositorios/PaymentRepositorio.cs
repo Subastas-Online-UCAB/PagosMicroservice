@@ -1,14 +1,27 @@
-using Microsoft.EntityFrameworkCore;
+using Pagos.Domain.Repositorios;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UsuarioServicio.Infrastructure.Persistencia;
 using Pagos.Domain.Entidades;
-using Pagos.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
+using Pagos.Domain.Eventos;
+using Pagos.Infrastructure.MongoDB.Documents;
+using MassTransit;
+using Pagos.Infrastructure.Mongo;
+using Pagos.Application.DTO;
+using Pagos.Infrastructure.MongoDB;
 
 namespace Pagos.Infrastructure.Repositorios;
 
-public class PagoRepositorio : IPagoRopositorio
+public class PaymentRepositorio : IPagoRopositorio
 {
     private readonly PagoDbContext _context;
 
-    public PagoRepositorio(PagoDbContext context)
+    public PaymentRepositorio(PagoDbContext context)
     {
         _context = context;
     }

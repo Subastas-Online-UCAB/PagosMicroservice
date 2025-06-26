@@ -10,13 +10,13 @@ public class PagoController : ControllerBase
 {
 	private readonly IPagoservicio _pagoServicio;
 
-	public PagoController(IPagoServicio pagoServicio)
+	public PagoController(IPaymentServicio pagoServicio)
 	{
 		_pagoServicio = pagoServicio;
 	}
 
 	[HttpPost]
-	public async Task<IActionResult> ProcessPayment([FromBody] CrearPagoDto pagoDto)
+	public async Task<IActionResult> ProcessPayment([FromBody] CrearPaymentDto pagoDto)
 	{
 		var result = await _pagoServicio.ProcessPaymentAsync(pagoDto);
 		return Ok(result);

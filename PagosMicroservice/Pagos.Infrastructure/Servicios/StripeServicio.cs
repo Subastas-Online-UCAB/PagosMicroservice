@@ -17,7 +17,7 @@ public class StripeServicio
     {
         var options = new PaymentIntentCreateOptions
         {
-            Cantidad = (long)(amount * 100), // Stripe usa centavos
+            Monto = (long)(monto * 100), // Stripe usa centavos
             Metadata = new Dictionary<string, string>
             {
                 { "IdUsuario", IdUsuario },

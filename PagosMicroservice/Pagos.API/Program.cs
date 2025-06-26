@@ -11,9 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<PaymentDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<IPagoRepositorio, PagoRepositorio>();
+builder.Services.AddScoped<IPaymentRepositorio, PaymentRepositorio>();
 builder.Services.AddScoped<StripeServicio>();
-builder.Services.AddScoped<IPagoServicio, PagoServicio>();
+builder.Services.AddScoped<IPaymentServicio, PaymentServicio>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
