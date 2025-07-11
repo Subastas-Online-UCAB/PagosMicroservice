@@ -11,7 +11,9 @@ namespace Pagos.Application.Commands
     {
         public decimal Monto { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public string Estado { get; set; } = "Pendiente";
+        public string Moneda { get; set; } = "usd";
+        public string Descripcion { get; set; } 
+
         public string CorreoUsuario { get; set; }
     }
 }

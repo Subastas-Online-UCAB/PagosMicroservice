@@ -25,7 +25,10 @@ namespace Pagos.Infrastructure.Consumidor
                 Monto = mensaje.Monto,
                 FechaCreacion = mensaje.FechaCreacion,
                 Estado = mensaje.Estado,
-                CorreoUsuario = mensaje.CorreoUsuario
+                CorreoUsuario = mensaje.CorreoUsuario,
+                StripeSessionId = mensaje.StripeSessionId,
+                StripePaymentIntentId = mensaje.StripePaymentIntentId,
+                RazonFallo = mensaje.RazonFallo
             };
 
             await _context.Pagos.InsertOneAsync(documento);

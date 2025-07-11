@@ -12,38 +12,30 @@ namespace Pagos.Application.servicios
         private readonly IPagoRepository _repository;
         private readonly IPublicadorPagoEventos _publisher;
 
-        public CrearPagoCommandHandler(IPagoRepository repository, IPublicadorPagoEventos publisher)
+        public CrearPagoCommandHandler(
+            IPagoRepository repository,
+            IPublicadorPagoEventos publisher)
         {
             _repository = repository;
             _publisher = publisher;
         }
 
-        public async Task<Guid> Handle(CrearPagoCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(
+            CrearPagoCommand request,
+            CancellationToken cancellationToken)
         {
-            var payment = new Payment
-            {
-                IdPago = Guid.NewGuid(),
-                Monto = request.Monto,
-                FechaCreacion = request.FechaCreacion,
-                Estado = "Pending",
-                CorreoUsuario = request.CorreoUsuario
-            };
+            // 1. Crear la entidad Payment usando el factory method
+            var payment = Payment.Create(
+                request.Monto,
+                request.CorreoUsuario);
 
-            // 1. Persistencia en base de datos principal (PostgreSQL)
+            // 2. Persistir en la base de datos principal
             await _repository.CrearAsync(payment, cancellationToken);
 
-            // 2. Publicar evento general (por ejemplo, para vistas o proyecciones)
-            var eventoCreado = new PagoCreado
-            {
-                Id = payment.IdPago,
-                Monto = payment.Monto,
-                FechaCreacion = payment.FechaCreacion,
-                Estado = "Pending",
-                CorreoUsuario = payment.CorreoUsuario
-            };
+            // 3. Publicar evento de dominio
+            await _publisher.PublicarPagoCreado(new PagoCreado(payment));
 
-            await _publisher.PublicarPagoCreado(eventoCreado);
-
+            // 4. Retornar ID del pago creado
             return payment.IdPago;
         }
     }

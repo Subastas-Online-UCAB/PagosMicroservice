@@ -5,77 +5,54 @@ using Pagos.Application.Commands;
 using Pagos.Application.Queries;
 using Pagos.Application.servicios;
 
-namespace Pagos.API.Controllers
+namespace Pagos.Api.Controllers
 {
-
     [ApiController]
     [Route("api/[controller]")]
-    public class PagosControlador : ControllerBase
+    public class PagosController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public PagosControlador(IMediator mediator)
+        public PagosController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        /// <summary>
-        /// Crea pago.
         [HttpPost]
-        public async Task<IActionResult> CrearPago([FromForm] CrearPagoCommand command)
+        public async Task<IActionResult> CrearPago([FromBody] CrearPagoCommand command)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var id = await _mediator.Send(command);
-            return CreatedAtAction(nameof(GetById), new { id }, new { id });
+            var pagoId = await _mediator.Send(command);
+            return Ok(new { PagoId = pagoId });
         }
 
+        [HttpPost("{id}/stripe/checkout")]
+        public async Task<IActionResult> IniciarPagoStripe(
+            Guid id,
+            [FromBody] StripeCheckoutRequest request)
+        {
+            var command = new IniciarPagoStripeCommand
+            {
+                PagoId = id,
+                SuccessUrl = request.SuccessUrl,
+                CancelUrl = request.CancelUrl
+            };
 
-        /// <summary>
+            var result = await _mediator.Send(command);
+            return Ok(result);
+        }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(Guid id)
+        public async Task<IActionResult> ObtenerPago(Guid id)
         {
-            return Ok(new { Id = id, Mensaje = "Pago recuperado (placeholder)" });
+            var query = new ConsultarPagoPorIdQuery(id);
+            var pago = await _mediator.Send(query);
+            return pago != null ? Ok(pago) : NotFound();
         }
+    }
 
-
-
-        [HttpGet]
-        [HttpGet]
-        public async Task<IActionResult> GetAll()
-        {
-            var resultado = await _mediator.Send(new GetAllPagosQuery());
-            return Ok(resultado);
-        }
-
-
-
-        [HttpPut("actualizar")]
-        public async Task<IActionResult> ActualizarPago(Guid id, [FromForm] ActualizarPagoCommand command)
-        {
-            command.PagoId = id; // Asignar el ID desde la ruta
-            var resultado = await _mediator.Send(command);
-            return resultado.Success ? Ok(resultado) : BadRequest(resultado);
-        }
-
-
-
-        /// <summary>
-        /// Consulta un pago por su ID.
-        [HttpGet("buscar/{id}")]
-        [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> ObtenerPorId(Guid id, CancellationToken cancellationToken)
-        {
-            var resultado = await _mediator.Send(new ConsultarPagoPorIdQuery(id), cancellationToken);
-
-            if (resultado is null)
-                return NotFound();
-
-            return Ok(resultado);
-        }
-
+    public class StripeCheckoutRequest
+    {
+        public string SuccessUrl { get; set; }
+        public string CancelUrl { get; set; }
     }
 }

@@ -21,25 +21,13 @@ namespace Pagos.Infrastructure.Consumidor
 
             var filter = Builders<PagoDocument>.Filter.Eq(s => s.Id, evento.Id);
 
-            var documentoActual = await _mongoContext.Pagos
-                .Find(filter)
-                .FirstOrDefaultAsync();
+            var update = Builders<PagoDocument>.Update
+                .Set(s => s.Estado, evento.Estado)
+                .Set(s => s.StripeSessionId, evento.StripeSessionId)
+                .Set(s => s.StripePaymentIntentId, evento.StripePaymentIntentId)
+                .Set(s => s.RazonFallo, evento.RazonFallo);
 
-
-            var updatedDocument = new PagoDocument
-            {
-                Id = evento.Id,
-                Monto = evento.Monto,
-                FechaCreacion = evento.FechaCreacion,
-                Estado = evento.Estado,
-                CorreoUsuario = evento.CorreoUsuario,
-            };
-
-            await _mongoContext.Pagos.ReplaceOneAsync(
-                filter,
-                updatedDocument,
-                new ReplaceOptions { IsUpsert = true }
-            );
+            await _mongoContext.Pagos.UpdateOneAsync(filter, update);
         }
     }
 }

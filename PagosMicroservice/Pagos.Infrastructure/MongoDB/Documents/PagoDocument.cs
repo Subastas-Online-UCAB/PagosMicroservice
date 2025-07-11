@@ -22,5 +22,14 @@ namespace Pagos.Infrastructure.MongoDB.Documents
         [BsonElement("correoUsuario")]
         public string CorreoUsuario { get; set; }
 
+        // Nuevos campos para Stripe
+        [BsonElement("stripeSessionId")]
+        public string StripeSessionId { get; set; }
+
+        [BsonElement("stripePaymentIntentId")]
+        public string StripePaymentIntentId { get; set; }
+
+        [BsonElement("razonFallo")]
+        public string RazonFallo { get; set; }
     }
 }

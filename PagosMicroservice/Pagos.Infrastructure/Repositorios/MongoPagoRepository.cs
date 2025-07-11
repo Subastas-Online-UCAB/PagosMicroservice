@@ -20,15 +20,22 @@ namespace Pagos.Infrastructure.Repositorios
         {
             var documentos = await _collection.Find(_ => true).ToListAsync(cancellationToken);
 
-            return documentos.Select(doc => new Payment
+            return documentos.Select(doc => MapToEntity(doc)).ToList();
+        }
+
+        private Payment MapToEntity(PagoDocument doc)
+        {
+            return new Payment
             {
                 IdPago = doc.Id,
                 Monto = doc.Monto,
                 FechaCreacion = doc.FechaCreacion,
                 Estado = doc.Estado,
-                CorreoUsuario = doc.CorreoUsuario
-            }).ToList();
-
+                CorreoUsuario = doc.CorreoUsuario,
+                StripeSessionId = doc.StripeSessionId,
+                StripePaymentIntentId = doc.StripePaymentIntentId,
+                RazonFallo = doc.RazonFallo
+            };
         }
     }
 }

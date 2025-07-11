@@ -21,14 +21,10 @@ namespace Pagos.Infrastructure.Repositorios
     public class PagoRepository : IPagoRepository
     {
         private readonly ApplicationDbContext _context;
-        private readonly IPagoMongoContext _mongoContext;
-        private readonly IPublishEndpoint _publishEndpoint;
 
-        public PagoRepository(ApplicationDbContext context, IPagoMongoContext mongoContext, IPublishEndpoint publishEndpoint)
+        public PagoRepository(ApplicationDbContext context)
         {
             _context = context;
-            _mongoContext = mongoContext;
-            _publishEndpoint = publishEndpoint;
         }
 
         public async Task<Guid> CrearAsync(Payment pago, CancellationToken cancellationToken)
@@ -38,21 +34,10 @@ namespace Pagos.Infrastructure.Repositorios
             return pago.IdPago;
         }
 
-        public async Task<Payment?> ObtenerPorIdAsync(Guid id)
-        {
-            return await _context.Pagos.FirstOrDefaultAsync(s => s.IdPago == id);
-        }
-
-        public async Task ActualizarAsync(Payment pago)
-        {
-            _context.Pagos.Update(pago);
-            await _context.SaveChangesAsync();
-        }
-
         public async Task<Payment?> ObtenerPorIdAsync(Guid id, CancellationToken cancellationToken)
         {
             return await _context.Pagos
-                .FirstOrDefaultAsync(s => s.IdPago == id, cancellationToken);
+                .FirstOrDefaultAsync(p => p.IdPago == id, cancellationToken);
         }
 
         public async Task ActualizarAsync(Payment pago, CancellationToken cancellationToken)
@@ -63,22 +48,8 @@ namespace Pagos.Infrastructure.Repositorios
 
         public async Task<Payment?> ObtenerPagoCompletoPorIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            var doc = await _mongoContext.Pagos
-                .Find(s => s.Id == id)
-                .FirstOrDefaultAsync(cancellationToken);
-
-            if (doc is null) return null;
-
-            return new Payment
-            {
-                IdPago = doc.Id,
-                Monto = doc.Monto,
-                FechaCreacion = doc.FechaCreacion,
-                Estado = doc.Estado,
-                CorreoUsuario = doc.CorreoUsuario
-            };
+            return await _context.Pagos
+                .FirstOrDefaultAsync(p => p.IdPago == id, cancellationToken);
         }
-
-
     }
 }

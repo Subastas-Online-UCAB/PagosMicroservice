@@ -28,7 +28,9 @@ namespace Pagos.Application.Handlers
                 Monto = payment.Monto,
                 FechaCreacion = payment.FechaCreacion,
                 Estado = payment.Estado,
-                CorreoUsuario = payment.CorreoUsuario
+                CorreoUsuario = payment.CorreoUsuario,
+                StripePaymentIntentId = payment.StripePaymentIntentId,
+                StripeSessionId = payment.StripeSessionId
             };
         }
 
