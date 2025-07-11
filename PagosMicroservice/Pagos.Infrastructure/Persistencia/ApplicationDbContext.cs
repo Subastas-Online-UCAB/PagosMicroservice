@@ -6,52 +6,43 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Pagos.Domain.Entidades;
 
-namespace UsuarioServicio.Infrastructure.Persistencia
+namespace Pago.Infrastructure.Persistencia
 {
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
 
-        public DbSet<Payment> Payment { get; set; }
-
-        // Opcionalmente, para ver las tablas creadas, puedes sobreescribir OnModelCreating
+        public DbSet<Payment> Pagos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             // Opcional: Cambiar nombre de la tabla si quieres
-            modelBuilder.Entity<Payment>().ToTable("Payment");
+            modelBuilder.Entity<Payment>().ToTable("Pagos");
 
             // Opcional: Configuraciones de columnas si quieres afinar
             modelBuilder.Entity<Payment>(entity =>
             {
-               // entity.ToTable("Subastas");
+                // entity.ToTable("Pagos");
 
-                entity.HasKey(s => s.IdPayment);
+                entity.HasKey(s => s.IdPago);
 
                 entity.Property(s => s.Monto)
                     .IsRequired()
                     .HasColumnType("decimal(18,2)");
 
+                entity.Property(s => s.FechaCreacion)
+                    .IsRequired();
+
                 entity.Property(s => s.Estado)
                     .IsRequired()
                     .HasMaxLength(50);
 
-                entity.Property(s => s.Estado)
+                entity.Property(s => s.CorreoUsuario)
                     .IsRequired()
-                    .HasMaxLength(200);
-
-                entity.Property(s => s.FechaPayment)
-                    .IsRequired();
-
-
-                entity.Property(s => s.IdUsuario)
-                    .IsRequired();
-
-                entity.Property(s => s.IdSubasta)
-                    .IsRequired();
+                    .HasMaxLength(100);
             });
         }
     }

@@ -1,0 +1,7 @@
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.API\obj\Debug\net9.0\Pagos.API.csproj.AssemblyReference.cache
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.API\obj\Debug\net9.0\Pagos.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.API\obj\Debug\net9.0\Pagos.API.AssemblyInfoInputs.cache
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.API\obj\Debug\net9.0\Pagos.API.AssemblyInfo.cs
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.API\obj\Debug\net9.0\Pagos.API.csproj.CoreCompileInputs.cache
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.API\obj\Debug\net9.0\Pagos.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Xrixer\Documents\GitHub\PagosMicroservice\PagosMicroservice\Pagos.API\obj\Debug\net9.0\Pagos.API.sourcelink.json

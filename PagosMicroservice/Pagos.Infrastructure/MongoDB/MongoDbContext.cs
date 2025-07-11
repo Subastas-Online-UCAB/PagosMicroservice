@@ -10,7 +10,7 @@ using Pagos.Infrastructure.MongoDB.Documents;
 
 namespace Pagos.Infrastructure.Mongo
 {
-    public class MongoDbContext : IPaymentMongoContext
+    public class MongoDbContext : IPagoMongoContext
     {
         private readonly IMongoDatabase _database;
 
@@ -21,10 +21,9 @@ namespace Pagos.Infrastructure.Mongo
             _database = client.GetDatabase(settings.DatabaseName);
         }
 
-        public IMongoCollection<PaymentDocument> Payment =>
-            _database.GetCollection<PaymentDocument>("payment");
+        public IMongoCollection<PagoDocument> Pagos =>
+            _database.GetCollection<PagoDocument>("pagos");
 
         public IMongoDatabase Database => _database;
-    
     }
 }

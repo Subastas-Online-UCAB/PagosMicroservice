@@ -22,7 +22,7 @@
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net9.0"
+          "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
@@ -30,11 +30,17 @@
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net9.0": {
-            "targetAlias": "net9.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {
               "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Application\\Pagos.Application.csproj": {
                 "projectPath": "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Application\\Pagos.Application.csproj"
+              },
+              "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Domain\\Pagos.Domain.csproj": {
+                "projectPath": "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Domain\\Pagos.Domain.csproj"
+              },
+              "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Infrastructure\\Pagos.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Infrastructure\\Pagos.Infrastructure.csproj"
               }
             }
           }
@@ -52,22 +58,22 @@
         "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
-        "net9.0": {
-          "targetAlias": "net9.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
+            "MassTransit": {
+              "target": "Package",
+              "version": "[8.4.1, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[9.0.6, )"
-            },
-            "Microsoft.AspNetCore.OpenApi": {
-              "target": "Package",
-              "version": "[9.0.4, )"
+              "version": "[8.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.4, )"
             },
             "MongoDB.Driver": {
               "target": "Package",
@@ -75,7 +81,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[9.0.1, )"
+              "version": "[8.1.1, )"
             },
             "xunit": {
               "target": "Package",
@@ -85,7 +91,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[3.1.1, )"
+              "version": "[3.1.0, )"
             }
           },
           "imports": [
@@ -142,9 +148,6 @@
             "projectReferences": {
               "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Domain\\Pagos.Domain.csproj": {
                 "projectPath": "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Domain\\Pagos.Domain.csproj"
-              },
-              "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Infrastructure\\Pagos.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Infrastructure\\Pagos.Infrastructure.csproj"
               }
             }
           }
@@ -165,9 +168,41 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[8.4.1, )"
+            },
+            "MassTransit.Abstractions": {
+              "target": "Package",
+              "version": "[8.5.0, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[12.5.0, )"
+            },
+            "MediatR.Contracts": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
+            "MediatR.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.3.0, )"
+            },
+            "MongoDB.Bson": {
+              "target": "Package",
+              "version": "[3.4.0, )"
             }
           },
           "imports": [
@@ -236,6 +271,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Stripe.net": {
+              "target": "Package",
+              "version": "[48.3.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -285,6 +326,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Application\\Pagos.Application.csproj": {
+                "projectPath": "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Application\\Pagos.Application.csproj"
+              },
               "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Domain\\Pagos.Domain.csproj": {
                 "projectPath": "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Domain\\Pagos.Domain.csproj"
               }
@@ -307,37 +351,41 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Keycloak.Net": {
+              "target": "Package",
+              "version": "[1.0.18, )"
+            },
             "MassTransit": {
               "target": "Package",
-              "version": "[8.5.0, )"
+              "version": "[8.4.1, )"
             },
             "MassTransit.MongoDb": {
               "target": "Package",
-              "version": "[8.5.0, )"
+              "version": "[8.4.0, )"
             },
             "MassTransit.RabbitMQ": {
               "target": "Package",
-              "version": "[8.5.0, )"
+              "version": "[8.4.0, )"
+            },
+            "Microsoft.AspNetCore.Http": {
+              "target": "Package",
+              "version": "[2.3.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.6, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.6, )"
+              "version": "[9.0.4, )"
             },
             "MongoDB.Driver": {
               "target": "Package",
@@ -346,10 +394,6 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.4, )"
-            },
-            "Stripe.net": {
-              "target": "Package",
-              "version": "[48.2.0, )"
             }
           },
           "imports": [

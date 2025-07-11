@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "SLdflrcmDMA=",
+  "dgSpecHash": "z5OarMmAhSY=",
   "success": true,
   "projectFilePath": "C:\\Users\\Xrixer\\Documents\\GitHub\\PagosMicroservice\\PagosMicroservice\\Pagos.Domain\\Pagos.Domain.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Xrixer\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\Xrixer\\.nuget\\packages\\stripe.net\\48.3.0\\stripe.net.48.3.0.nupkg.sha512",
+    "C:\\Users\\Xrixer\\.nuget\\packages\\system.configuration.configurationmanager\\8.0.0\\system.configuration.configurationmanager.8.0.0.nupkg.sha512",
+    "C:\\Users\\Xrixer\\.nuget\\packages\\system.diagnostics.eventlog\\8.0.0\\system.diagnostics.eventlog.8.0.0.nupkg.sha512",
+    "C:\\Users\\Xrixer\\.nuget\\packages\\system.security.cryptography.protecteddata\\8.0.0\\system.security.cryptography.protecteddata.8.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
